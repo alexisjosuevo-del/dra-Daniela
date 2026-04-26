@@ -1,0 +1,290 @@
+/* TUFARMA - sitio ordenado por secciones (estilo corporativo)
+   Configura datos rápidos aquí: WhatsApp, textos, etc.
+*/
+const CONFIG = {
+  whatsappNumberE164: "+525500000000", // <- CAMBIA AQUÍ tu número real (con +52)
+  whatsappDefaultMessage: "Hola, me gustaría solicitar información sobre los servicios de TUFARMA.",
+  locationText: "CDMX / Edo. Méx",
+  scheduleText: "Lun–Sáb 9:00–18:00",
+  emailText: "contacto@tufarma.com"
+};
+
+const CLINIC_SERVICES = [
+  {
+    "id": "toxina",
+    "title": "Aplicación de toxina botulínica",
+    "items": [
+      "Corrección de líneas de expresión (frente, entrecejo, patas de gallo).",
+      "Tratamientos de sonrisa gingival, bruxismo y afinamiento del rostro.",
+      "Microtox en piel para poros finos y efecto “glass skin”."
+    ],
+    "icon": "assets/img/icon-toxina.png",
+    "thumb": "assets/img/services/toxina.webp"
+  },
+  {
+    "id": "peelings",
+    "title": "Quimioexfoliaciones (peelings químicos)",
+    "items": [
+      "Tratamiento de manchas y fotoenvejecimiento.",
+      "Protocolos para acné activo y cicatrices residuales.",
+      "Esquemas combinados según tipo de piel y necesidad estética."
+    ],
+    "icon": "assets/img/icon-peelings.png",
+    "thumb": "assets/img/services/peelings.webp"
+  },
+  {
+    "id": "dermapen",
+    "title": "Tratamientos con Dermapen",
+    "items": [
+      "Inducción de colágeno para rejuvenecimiento facial global.",
+      "Manejo de cicatrices de acné.",
+      "Rejuvenecimiento periocular dirigido.",
+      "Combinación con cócteles vitamínicos y ácido hialurónico no reticulado."
+    ],
+    "icon": "assets/img/icon-dermapen.png",
+    "thumb": "assets/img/services/dermapen.webp"
+  },
+  {
+    "id": "mesoterapia",
+    "title": "Mesoterapia facial y corporal",
+    "items": [
+      "Reafirmación y mejora de la luminosidad cutánea.",
+      "Lipólisis localizada en brazos, abdomen, muslos u otras zonas de grasa.",
+      "Hidratación profunda mediante vitaminas y aminoácidos."
+    ],
+    "icon": "assets/img/icon-mesoterapia.png",
+    "thumb": "assets/img/services/mesoterapia.webp"
+  },
+  {
+    "id": "escleroterapia",
+    "title": "Escleroterapia para várices",
+    "items": [
+      "Eliminación de telangiectasias y venas pequeñas superficiales.",
+      "Mejora estética progresiva del aspecto de las piernas.",
+      "Sesiones personalizadas de acuerdo al patrón vascular."
+    ],
+    "icon": "assets/img/icon-escleroterapia.png",
+    "thumb": "assets/img/services/escleroterapia.webp"
+  },
+  {
+    "id": "hiperpigmentacion",
+    "title": "Tratamiento para hiperpigmentación íntima",
+    "items": [
+      "Despigmentación progresiva con activos seguros para la zona.",
+      "Protocolos combinados (peeling, dermapen y mesoterapia).",
+      "Resultados graduales y personalizados según el fototipo."
+    ],
+    "icon": "assets/img/icon-hiperpigmentacion.png",
+    "thumb": "assets/img/services/hiperpigmentacion.webp"
+  }
+];
+
+const DISTRIB_CATEGORIES = [
+  {
+    title: "Dermocosmética",
+    desc: "Líneas de cuidado de piel, hidratación, antioxidantes y rutinas.",
+    status: "Próximamente"
+  },
+  {
+    title: "Belleza íntima",
+    desc: "Productos para higiene íntima, cuidado y protocolos. Incluye Íntimo Renovacell.",
+    status: "Activo"
+  },
+  {
+    title: "Accesorios & cuidado",
+    desc: "Complementos, kits y productos de apoyo para tratamientos.",
+    status: "Editable"
+  },
+  {
+    title: "Farmacia",
+    desc: "Surtido de medicamentos y atención. Completa con tus categorías reales.",
+    status: "Editable"
+  }
+];
+
+const PROCESOS = [
+  {
+    title: "Escleroterapia para várices",
+    desc: "Video breve de procedimiento en pierna. Ideal para la sección de procesos.",
+    src: "assets/videos/proceso_1.mp4",
+    cta: "Pedir información"
+  },
+  {
+    title: "Evaluación / valoración facial",
+    desc: "Clip tipo valoración/testimonio para mostrar seguimiento o evaluación.",
+    src: "assets/videos/proceso_2.mp4",
+    cta: "Agendar valoración"
+  }
+];
+
+function waLink(message){
+  const num = (CONFIG.whatsappNumberE164 || "").replace(/\s/g,"");
+  const text = encodeURIComponent(message || CONFIG.whatsappDefaultMessage || "");
+  return `https://wa.me/${num.replace("+","")}?text=${text}`;
+}
+
+function qs(sel, parent=document){ return parent.querySelector(sel); }
+function qsa(sel, parent=document){ return [...parent.querySelectorAll(sel)]; }
+
+function initYear(){
+  const y = qs("#year");
+  if(y) y.textContent = new Date().getFullYear();
+}
+
+function initTopbar(){
+  const btn = qs("#menuBtn");
+  const mob = qs("#mobileNav");
+  if(!btn || !mob) return;
+  btn.addEventListener("click", ()=>{
+    const open = mob.style.display === "block";
+    mob.style.display = open ? "none" : "block";
+    btn.setAttribute("aria-expanded", String(!open));
+  });
+  qsa("a", mob).forEach(a=>a.addEventListener("click", ()=> mob.style.display="none"));
+}
+
+function initWhatsApp(){
+  const btns = qsa("[data-wa]");
+  btns.forEach(b=>{
+    b.setAttribute("href", waLink(b.getAttribute("data-wa") || undefined));
+    b.setAttribute("target","_blank");
+    b.setAttribute("rel","noopener");
+  });
+  const num = qs("#waNumber");
+  if(num) num.textContent = CONFIG.whatsappNumberE164;
+  const loc = qs("#locText"); if(loc) loc.textContent = CONFIG.locationText;
+  const sch = qs("#schText"); if(sch) sch.textContent = CONFIG.scheduleText;
+  const mail = qs("#mailText"); if(mail) mail.textContent = CONFIG.emailText;
+}
+
+function initHeroSlides(){
+  const imgs = qsa(".heroSlides img");
+  if(!imgs.length) return;
+  let idx = 0;
+  imgs[idx].classList.add("active");
+  const next = ()=>{
+    imgs[idx].classList.remove("active");
+    idx = (idx+1) % imgs.length;
+    imgs[idx].classList.add("active");
+  };
+  let timer = setInterval(next, 4200);
+
+  const prevBtn = qs("#slidePrev");
+  const nextBtn = qs("#slideNext");
+  const jump = (dir)=>{
+    clearInterval(timer);
+    imgs[idx].classList.remove("active");
+    idx = (idx + dir + imgs.length) % imgs.length;
+    imgs[idx].classList.add("active");
+    timer = setInterval(next, 4200);
+  };
+  prevBtn?.addEventListener("click", ()=> jump(-1));
+  nextBtn?.addEventListener("click", ()=> jump(1));
+}
+
+function initAccordion(){
+  qsa("[data-acc]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const item = btn.closest(".accordionItem");
+      const panel = qs(".accordionPanel", item);
+      const isOpen = item.classList.toggle("open");
+      btn.querySelector(".m").textContent = isOpen ? "Ocultar" : "Ver";
+      panel.style.maxHeight = isOpen ? panel.scrollHeight + "px" : "0px";
+    });
+  });
+  const first = qs(".accordionItem");
+  if(first && window.innerWidth > 980){
+    const btn = qs("[data-acc]", first);
+    btn?.click();
+  }
+}
+
+function initReveal(){
+  const els = qsa(".reveal");
+  if(!els.length) return;
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add("on");
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el=> io.observe(el));
+}
+
+function mountServices(){
+  const wrap = qs("#servicesAccordion");
+  if(!wrap) return;
+  wrap.innerHTML = CLINIC_SERVICES.map((s)=>{
+    const icon = s.icon || "assets/img/icon-toxina.png";
+    const lis = (s.items||[]).map(it=>`<li>${it}</li>`).join("");
+    return `
+      <div class="accordionItem" id="svc-${s.id}">
+        <button class="accordionBtn" type="button" data-acc>
+          <div class="svcMedia">
+            <img class="svcThumb" src="${s.thumb || icon}" alt="${s.title}">
+            <img class="svcIcon" src="${icon}" alt="">
+          </div>
+          <div>
+            <div class="t">${s.title}</div>
+            <div style="color:var(--muted); font-weight:800; font-size:12px; margin-top:2px;">Información clara • Protocolos personalizados</div>
+          </div>
+          <div class="m">Ver</div>
+        </button>
+        <div class="accordionPanel">
+          <div class="inner">
+            <ul class="list">${lis}</ul>
+            <div class="tagRow">
+              <span class="tag">Evaluación</span>
+              <span class="tag">Protocolo</span>
+              <span class="tag">Seguimiento</span>
+            </div>
+            <div class="btnRow" style="margin-top:14px">
+              <a class="btn small primary" data-wa="Hola, quiero información de: ${s.title}">Solicitar por WhatsApp</a>
+              <a class="btn small" href="#contacto">Agendar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function mountDistrib(){
+  const wrap = qs("#distribGrid");
+  if(!wrap) return;
+  wrap.innerHTML = DISTRIB_CATEGORIES.map(c=>`
+    <div class="card reveal">
+      <div class="icon">✦</div>
+      <h3>${c.title}</h3>
+      <p>${c.desc}</p>
+      <div class="tagRow"><span class="tag">${c.status}</span></div>
+    </div>
+  `).join("");
+}
+
+function mountProcesos(){
+  const wrap = qs("#procesosGrid");
+  if(!wrap) return;
+  wrap.innerHTML = PROCESOS.map(v=>`
+    <div class="mediaCard reveal">
+      <video src="${v.src}" controls playsinline preload="metadata"></video>
+      <div class="cap">
+        <strong>${v.title}</strong>
+        <span>${v.desc}</span>
+      </div>
+    </div>
+  `).join("");
+}
+
+function boot(){
+  initYear();
+  initTopbar();
+  mountServices();
+  mountDistrib();
+  mountProcesos();
+  initWhatsApp();
+  initHeroSlides();
+  initAccordion();
+  initReveal();
+}
+
+document.addEventListener("DOMContentLoaded", boot);

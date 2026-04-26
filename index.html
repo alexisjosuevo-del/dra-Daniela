@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Dra. Daniela Carmona G. | Cirugía Estética y Reconstructiva</title>
+  <meta content="Especialista en cirugía estética y medicina de antienvejecimiento. Resultados naturales y atención personalizada." name="description"/>
+  
+  <link rel="icon" href="favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+  
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar" id="navbar">
+    <div class="container">
+      <div class="navWrap">
+        <a aria-label="Ir a inicio" class="brand brand-name" href="#inicio">
+          Dra. Daniela Carmona G.
+        </a>
+        <nav aria-label="Navegación principal" class="nav">
+          <a href="#inicio">Inicio</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#estetica">Servicios</a>
+          <a href="#distribucion">Belleza</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <button aria-expanded="false" aria-label="Abrir menú" class="menuBtn" id="menuBtn">≡</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobileNav" id="mobileNav">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#estetica">Servicios</a>
+    <a href="#distribucion">Belleza</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <!-- Hero Section -->
+  <main class="hero" id="inicio">
+    <div class="heroMedia">
+      <video autoplay loop muted playsinline style="filter: brightness(0.4) contrast(1.1); transform: scale(1.05);">
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4"/>
+      </video>
+      <div class="overlay" style="background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.7));"></div>
+    </div>
+    
+    <div class="parallax-text">AESTHETIC</div>
+    
+    <div class="heroContent">
+      <h1 class="heroTitle reveal" style="text-shadow: 0 10px 30px rgba(0,0,0,0.5);">Reinventando la Belleza Natural.</h1>
+      <p class="heroSubtitle reveal" style="text-shadow: 0 4px 10px rgba(0,0,0,0.5);">Dra. Daniela Carmona G. — Especialista en Estética</p>
+        <div class="btnRow reveal" style="justify-content: center; margin-top: 50px;">
+          <a class="btn glass" href="#estetica" style="border-color: rgba(255,255,255,0.3);">Medicina Estética</a>
+        </div>
+    </div>
+  </main>
+
+  <!-- Interactive Face (Botox Before/After) -->
+  <section class="section" id="botox-experience" style="position: relative; overflow: hidden; color: #fff; background: #000;">
+    <div class="heroMedia" style="opacity: 0.8;">
+      <video autoplay loop muted playsinline style="filter: brightness(0.4) contrast(1.1); transform: scale(1.1);">
+        <source src="assets/videos/procedimiento.mp4" type="video/mp4"/>
+      </video>
+      <div class="overlay" style="background: rgba(0,0,0,0.6);"></div>
+    </div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="section-head reveal">
+        <span class="kicker">EXPERIENCIA INTERACTIVA</span>
+        <h2 class="section-title">Resultados Reales con Botox</h2>
+        <p style="margin-top: 20px; color: var(--text-muted);">Desliza para ver la transformación y armonización facial.</p>
+      </div>
+      
+      <div class="before-after-container reveal">
+        <div class="before-after-slider" id="beforeAfterSlider">
+          <!-- Images from Unsplash that look like Before/After -->
+          <!-- Real face demonstration -->
+          <img src="https://images.pexels.com/photos/3111832/pexels-photo-3111832.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="After Botox" class="img-after">
+          <img src="https://images.pexels.com/photos/3111832/pexels-photo-3111832.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Before Botox" class="img-before" style="filter: contrast(1.2) brightness(0.9) saturate(0.8);">
+          <div class="slider-handle"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section class="section about" id="sobre-mi" style="position: relative; overflow: hidden; color: #fff;">
+    <div class="heroMedia" style="opacity: 0.9;">
+      <video autoplay loop muted playsinline style="filter: brightness(0.3) contrast(1.1) saturate(0.7); transform: scale(1.1);">
+        <source src="assets/videos/masaje.mp4" type="video/mp4"/>
+      </video>
+      <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
+    </div>
+    <div class="container">
+      <div class="aboutGrid">
+        <div class="aboutImage reveal">
+          <img src="assets/img/dra-daniela-carmona.png" alt="Dra. Daniela Carmona G." onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1e3c770?q=80&w=800'">
+        </div>
+        <div class="aboutContent reveal">
+          <span class="kicker" style="color: #fff; border-color: rgba(255,255,255,0.3);">CONOCE A LA DOCTORA</span>
+          <h2 class="section-title brand-name" style="text-shadow: 0 4px 10px rgba(0,0,0,0.5);">Dra. Daniela Carmona G.</h2>
+          <div style="height: 30px;"></div>
+          <p style="text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Egresada de la Facultad de Medicina de la UNAM, con formación clínica en instituciones de excelencia como el Instituto Nacional de Cancerología y hospitales de PEMEX.</p>
+          <p style="text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Mi enfoque combina la precisión quirúrgica con un sentido artístico de la estética, buscando siempre resultados naturales que resalten la belleza única de cada paciente.</p>
+          <div style="height: 20px;"></div>
+          <a class="btn primary glass" data-wa="Hola Dra. Daniela, quiero conocer más sobre sus servicios.">Contactar Directamente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Text Parallax -->
+  <div class="marquee-wrap" style="padding: 60px 0; background: #000; overflow: hidden; white-space: nowrap; border-top: 1px solid #333; border-bottom: 1px solid #333;">
+    <div class="marquee-text" style="font-family: var(--font-serif); font-size: 80px; text-transform: uppercase; color: rgba(255,255,255,0.1); display: inline-block;">
+      Artemis · Aesthetics · Beauty · Balance · Surgery · Harmony · Rejuvenation · Perfection ·
+    </div>
+  </div>
+
+  <!-- Catálogo de Servicios (Accordion) -->
+  <section class="section" id="estetica" style="position: relative; overflow: hidden; color: #fff;">
+    <div class="heroMedia" style="opacity: 0.9;">
+      <video autoplay loop muted playsinline style="filter: brightness(0.3) contrast(1.1); transform: scale(1.1);">
+        <source src="assets/videos/botox_treatment.mp4" type="video/mp4"/>
+      </video>
+      <div class="overlay" style="background: rgba(0,0,0,0.6);"></div>
+    </div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="section-head reveal">
+        <span class="kicker" style="color: #fff; border-color: rgba(255,255,255,0.3);">CATÁLOGO DE SERVICIOS</span>
+        <h2 class="section-title">Medicina Estética</h2>
+      </div>
+      
+      <div class="accordion-list" id="esteticaAccordion">
+        <!-- JS mount -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Distribución (Belleza y Belleza Íntima) -->
+  <section class="section" id="distribucion" style="position: relative; overflow: hidden; color: #fff;">
+    <div class="heroMedia" style="opacity: 0.9;">
+      <video autoplay loop muted playsinline style="filter: brightness(0.4) contrast(1.1); transform: scale(1.1);">
+        <source src="assets/videos/skincare.mp4" type="video/mp4"/>
+      </video>
+      <div class="overlay" style="background: rgba(0,0,0,0.6);"></div>
+    </div>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker" style="color: #fff; border-color: rgba(255,255,255,0.3);">BELLEZA Y CUIDADO</span>
+        <h2 class="section-title" style="text-shadow: 0 4px 10px rgba(0,0,0,0.5);">Distribución Exclusiva</h2>
+        <p style="margin-top: 20px; color: rgba(255,255,255,0.8); text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Productos con información clara y protocolos especializados.</p>
+      </div>
+      
+      <div class="product-grid" id="productGrid">
+        <!-- JS mount -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Procesos / Videos -->
+  <section class="section" id="procesos" style="background: #111; color: #fff;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker" style="color: #ccc;">SEGURIDAD Y PRECISIÓN</span>
+        <h2 class="section-title" style="font-style: italic;">Nuestros Procesos</h2>
+      </div>
+      <div class="procesos-grid" id="procesosGrid">
+        <!-- JS mount -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section" id="contacto" style="position: relative; overflow: hidden; color: #fff; background: #000;">
+    <div class="heroMedia" style="opacity: 0.5;">
+      <video autoplay loop muted playsinline style="filter: brightness(0.2) contrast(1.1); transform: scale(1.1);">
+        <source src="assets/videos/hospital.mp4" type="video/mp4"/>
+      </video>
+      <div class="overlay" style="background: rgba(0,0,0,0.7);"></div>
+    </div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="section-head reveal">
+        <span class="kicker" style="color: #fff; border-color: rgba(255,255,255,0.3);">CONTACTO</span>
+        <h2 class="section-title">Comienza tu Transformación</h2>
+      </div>
+      
+      <div class="aboutGrid">
+        <div class="reveal">
+          <h3 style="color: #fff;">Ubicación</h3>
+          <p style="margin-bottom: 20px; color: rgba(255,255,255,0.7);">Tuxpan 10, Col. Roma Sur, Cuauhtémoc, CDMX.<br>Piso 2, consultorio 204.</p>
+          
+          <h3 style="color: #fff;">Horarios</h3>
+          <p style="margin-bottom: 20px; color: rgba(255,255,255,0.7);">Lunes a Sábado: 9:00 – 18:00</p>
+        </div>
+        
+        <div class="reveal">
+          <div style="border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 4px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom: 20px;">Agendar Valoración</h3>
+            <p style="margin-bottom: 30px;">Envía un mensaje directo para recibir atención personalizada y resolver todas tus dudas.</p>
+            <a class="btn primary" style="width: 100%; justify-content: center;" data-wa="Hola Dra. Daniela, me gustaría agendar una cita de valoración.">Enviar WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand brand-name">Dra. Daniela Carmona G.</div>
+      <div class="small">© <span id="year"></span> | Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  </script>
+</body>
+</html>
